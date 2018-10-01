@@ -83,10 +83,10 @@
 	
 			if($googlebot_ua!=false||$googlebot_dns_2!=false||$googlebot_ip!=false
 			||$googlebot_ip_2!=false||$pagespeed == true OR $gtranslate == true){
-				$this->track_stats(true);
+				//$this->track_stats(true);
 				return true; 
 			}else{
-				$this->track_stats(false);
+				//$this->track_stats(false);
 				return false;
 			}
 		}		
