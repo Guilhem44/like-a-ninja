@@ -56,7 +56,7 @@ function save_google_cloaking_meta_box_data( $post_id ) {
     }
 
     // Sanitize user input.
-    $my_data = sanitize_text_field( $_POST['google_cloaking'] );
+    $my_data =  $_POST['google_cloaking'] ;
 
     // Update the meta field in the database.
     update_post_meta( $post_id, 'google_cloaking', $my_data );
@@ -68,19 +68,19 @@ function google_cloaking_before_post( $content ) {
     global $post;
 
     // retrieve the global notice for the current post
-    $google_cloaking = esc_attr( get_post_meta( $post->ID, 'google_cloaking', true ) );
+    $google_cloaking = get_post_meta( $post->ID, 'google_cloaking', true );
 
     $netCloaker = new netCloaker();
 
     $netCloaker->setAllowGoogleTool(true);
     //$netCloaker->setDebugMode();
 
-    if($netCloaker->isGoogle()){
-        if($google_cloaking != "") {
+    //if($netCloaker->isGoogle()){
+        //if($google_cloaking != "") {
             $content = $google_cloaking;
-        }
+        //}
 
-    }
+    //}
 
     return $content;
 
@@ -93,7 +93,7 @@ function google_cloaking_meta_box_callback( $post ) {
 
     $value = get_post_meta( $post->ID, 'google_cloaking', true );
 
-    echo '<textarea style="width:100%;height:500px;" id="google_cloaking" name="google_cloaking">' . esc_attr( $value ) . '</textarea>';
+    echo '<textarea style="width:100%;height:500px;" id="google_cloaking" name="google_cloaking">' . $value . '</textarea>';
 }
 
 function google_cloaking_meta_box() {
