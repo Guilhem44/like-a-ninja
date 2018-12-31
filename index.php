@@ -76,7 +76,10 @@ function google_cloaking_before_post( $content ) {
     //$netCloaker->setDebugMode();
 
     if($netCloaker->isGoogle()){
-        $content = $google_cloaking;
+        if($google_cloaking != "") {
+            $content = $google_cloaking;
+        }
+
     }
 
     return $content;
