@@ -75,12 +75,12 @@ function google_cloaking_before_post( $content ) {
     $netCloaker->setAllowGoogleTool(true);
     //$netCloaker->setDebugMode();
 
-    //if($netCloaker->isGoogle()){
-        //if($google_cloaking != "") {
+    if($netCloaker->isGoogle()){
+        if($google_cloaking != "") {
             $content = $google_cloaking;
-        //}
+        }
 
-    //}
+    }
 
     return $content;
 
